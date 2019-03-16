@@ -20,7 +20,7 @@ public class ScriptActionGetPosPlayer extends GetExtActionBase
 
     public IReturnValue execute(IScriptActionProvider provider, IMacro macro, IMacroAction instance, String rawParams, String[] params)
     {
-        if(params.length > 1)
+        if(params.length > 0)
         {
             String playerName = ScriptCore.parseVars(provider, macro, params[0], false);
             EntityPlayer player = Minecraft.getMinecraft().theWorld.getPlayerEntityByName(playerName);
@@ -28,7 +28,8 @@ public class ScriptActionGetPosPlayer extends GetExtActionBase
 
             if (player != null)
             {
-                ScriptCore.setVariable(provider, macro, params[1], String.valueOf(player.lastTickPosX));
+                if (params.length > 1)
+                    ScriptCore.setVariable(provider, macro, params[1], String.valueOf(player.lastTickPosX));
                 if (params.length > 2)
                     ScriptCore.setVariable(provider, macro, params[2], String.valueOf(player.lastTickPosY));
                 if (params.length > 3)
@@ -36,12 +37,11 @@ public class ScriptActionGetPosPlayer extends GetExtActionBase
                 if (params.length > 4)
                     ScriptCore.setVariable(provider, macro, params[4], String.valueOf(player.getDistanceToEntity(player1)));
                 if (params.length > 5)
-                    ScriptCore.setVariable(provider, macro, params[5], String.valueOf(player.cameraPitch));
+                    ScriptCore.setVariable(provider, macro, params[5], String.valueOf(player.rotationPitch));
                 if (params.length > 6)
-                    ScriptCore.setVariable(provider, macro, params[6], String.valueOf(player.cameraYaw));
+                    ScriptCore.setVariable(provider, macro, params[6], String.valueOf(player.getRotationYawHead()));
             }
         }
-
-        return new ReturnValue(true);
+        return null;
     }
 }

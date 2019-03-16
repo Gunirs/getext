@@ -1,5 +1,6 @@
 package gunirs.module.getext;
 
+import cpw.mods.fml.common.registry.GameRegistry;
 import net.eq2online.macros.scripting.ScriptCore;
 import net.eq2online.macros.scripting.api.*;
 import net.minecraft.client.Minecraft;
@@ -25,19 +26,21 @@ public class ScriptActionCurrentItem extends GetExtActionBase
             String playerName = ScriptCore.parseVars(provider, macro, params[0], false);
             EntityPlayer player = Minecraft.getMinecraft().theWorld.getPlayerEntityByName(playerName);
 
-            if (player != null)
+            if (player != null && player.inventory.getCurrentItem() != null)
             {
                 if (params.length > 1)
-                    ScriptCore.setVariable(provider, macro, params[1], String.valueOf(player.inventory.getCurrentItem().getDisplayName()));
+                {
+                    GameRegistry.UniqueIdentifier item = GameRegistry.findUniqueIdentifierFor(player.inventory.getCurrentItem().getItem());
+                    ScriptCore.setVariable(provider, macro, params[1], item.modId + ":" + item.name);
+                }
                 if (params.length > 2)
-                    ScriptCore.setVariable(provider, macro, params[2], String.valueOf(player.inventory.getCurrentItem().getUnlocalizedName()));
+                    ScriptCore.setVariable(provider, macro, params[2], String.valueOf(player.inventory.getCurrentItem().getDisplayName()));
                 if (params.length > 3)
                     ScriptCore.setVariable(provider, macro, params[3], String.valueOf(player.inventory.getCurrentItem().getItemDamage()));
                 if (params.length > 4)
                     ScriptCore.setVariable(provider, macro, params[4], String.valueOf(player.inventory.getCurrentItem().isItemEnchanted()));
             }
         }
-
-        return new ReturnValue(true);
+        return null;
     }
 }

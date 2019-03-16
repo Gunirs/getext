@@ -5,6 +5,8 @@ import net.eq2online.macros.scripting.api.*;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.player.EntityPlayer;
 
+import java.util.Arrays;
+
 @APIVersion(16)
 public class ScriptActionGetPlayerInfo extends GetExtActionBase
 {
@@ -36,13 +38,11 @@ public class ScriptActionGetPlayerInfo extends GetExtActionBase
                 if (params.length > 4)
                     ScriptCore.setVariable(provider, macro, params[4], String.valueOf(player.isBurning()));
                 if (params.length > 5)
-                    ScriptCore.setVariable(provider, macro, params[5], String.valueOf(player.experienceLevel));
+                    ScriptCore.setVariable(provider, macro, params[5], String.valueOf(player.getArmorVisibility()));
                 if (params.length > 6)
-                    ScriptCore.setVariable(provider, macro, params[6], String.valueOf(player.getArmorVisibility()));
-
+                    ScriptCore.setVariable(provider, macro, params[6], Arrays.toString(player.getActivePotionEffects().toArray()));
             }
         }
-
-        return new ReturnValue(true);
+        return null;
     }
 }
