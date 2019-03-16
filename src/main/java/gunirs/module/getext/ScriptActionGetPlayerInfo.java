@@ -39,8 +39,6 @@ public class ScriptActionGetPlayerInfo extends GetExtActionBase
                     ScriptCore.setVariable(provider, macro, params[4], String.valueOf(player.isBurning()));
                 if (params.length > 5)
                     ScriptCore.setVariable(provider, macro, params[5], String.valueOf(player.getArmorVisibility()));
-                if (params.length > 6)
-                    ScriptCore.setVariable(provider, macro, params[6], Arrays.toString(player.getActivePotionEffects().toArray()));
             }
         }
         return null;
