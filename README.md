@@ -9,8 +9,8 @@ API version: 16 (for minecraft 1.7.10)
  * Forge
 
 # build
-To build a project, run the `gradlew build` command. The result will be in the build / libs folder.
-If you are not going to edit the source code, you can simply load the module in .jar format.
+To build a project, run the `gradlew build` command. The result will be in the `build/libs` folder.
+If you are not going to edit the source code, you can simply download the module in [.jar](https://github.com/jgunirs/getext/releases) format.
 
 # commands
  * GETPOSPLAYER(<&player>,[&posX],[&posY],[&posZ],[&distance],[&pitch],[&yaw]) - Get a player position.
