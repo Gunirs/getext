@@ -7,11 +7,11 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.entity.player.EntityPlayer;
 
 @APIVersion(16)
-public class ScriptActionGetArmor extends GetExtActionBase
+public class ScriptActionGetPlayerArmor extends GetExtActionBase
 {
     public String getName()
     {
-        return "getarmor";
+        return "getplayerarmor";
     }
 
     public boolean canExecuteNow(IScriptActionProvider provider, IMacro macro, IMacroAction instance, String rawParams, String[] params)

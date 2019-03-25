@@ -5,8 +5,6 @@ import net.eq2online.macros.scripting.api.*;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.player.EntityPlayer;
 
-import java.util.Arrays;
-
 @APIVersion(16)
 public class ScriptActionGetPlayerInfo extends GetExtActionBase
 {
@@ -39,6 +37,8 @@ public class ScriptActionGetPlayerInfo extends GetExtActionBase
                     ScriptCore.setVariable(provider, macro, params[4], String.valueOf(player.isBurning()));
                 if (params.length > 5)
                     ScriptCore.setVariable(provider, macro, params[5], String.valueOf(player.getArmorVisibility()));
+                if (params.length > 6)
+                    ScriptCore.setVariable(provider, macro, params[6], String.valueOf(String.format("%.3f", 20 * Math.sqrt(player.motionX * player.motionX + player.motionY * player.motionY + player.motionZ * player.motionZ))));
             }
         }
         return null;
