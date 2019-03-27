@@ -19,7 +19,7 @@ If you are not going to edit the source code, you can simply download the module
  * CURRENTITEM(<&player>,[&itemID],[&displayName],[&damage],[&isEnchanted]) - Get information about the item in hand.<br>
  <b>The radius in which you can receive information may be limited by the server</b>
  
- * GETMEMORY(<command>,[#output]) - Get data about RAM.<br>
+ * GETMEMORY(<command>,[&output]) - Get data about RAM.<br>
     <b>commands:</b>
       - [max] > Get maximum RAM.
       - [total] > Receive total RAM.
