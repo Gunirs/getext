@@ -38,7 +38,12 @@ public class ScriptActionGetPlayerInfo extends GetExtActionBase
                 if (params.length > 5)
                     ScriptCore.setVariable(provider, macro, params[5], String.valueOf(player.getArmorVisibility()));
                 if (params.length > 6)
-                    ScriptCore.setVariable(provider, macro, params[6], String.valueOf(String.format("%.3f", 20 * Math.sqrt(player.motionX * player.motionX + player.motionY * player.motionY + player.motionZ * player.motionZ))));
+                    ScriptCore.setVariable(provider, macro, params[6], String.valueOf(player.isSprinting()));
+                // does not work on other players
+                if (params.length > 7)
+                    ScriptCore.setVariable(provider, macro, params[7], String.format("%.3f", 20 * Math.sqrt(player.motionX * player.motionX + player.motionY * player.motionY + player.motionZ * player.motionZ)));
+                if (params.length > 8)
+                    ScriptCore.setVariable(provider, macro, params[8], String.valueOf(player.isInvisible()));
             }
         }
         return null;
